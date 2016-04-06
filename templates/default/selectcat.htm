@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>免费发布信息-{$config[sitename]}</title>
+<meta name="keywords" content="$postdetail[title]" />
+<meta name="description" content="$postdetail[body]" />
+<script src="static/js/jquery.js" type="text/javascript"></script>
+<script src="static/js/common.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/static/images/css.css">
+</head>
+
+<body>
+<div class="wrap" id="top3">
+<span>
+{if $_XCOOKIE[username] && $_XCOOKIE[password]}
+<a href="profile.php">$_XCOOKIE[username]</a>　
+<a href="javascript:;" onclick="window.location='$config[siteurl]/login.php?action=logout&next='+encodeURIComponent(location.href);return false;">退出登录</a>  
+{else}
+<a href="javascript:;" onclick="window.location='$config[siteurl]/register.php?next='+encodeURIComponent(location.href);return false;">免费注册</a> | 
+<a href="javascript:;" onclick="window.location='$config[siteurl]/login.php?next='+encodeURIComponent(location.href);return false;">会员登录</a>
+{/if}
+</span>
+<a href="$config[siteurl]"><img src="static/images/logo.gif" border="0" class="logo" /></a>
+<b>免费发布信息</b>
+</div>
+<div class="wrap"><div class="cattitle">选择大类</div></div>
+<div class="wrap">
+	<ul class="categorylist" id="bigcat">
+	{loop $CACHE[categories] $cat}
+	{if !$cat[fid]}
+	<li><a href="#{$cat[pinyin]}">$cat[cname]</a></li>
+	{/if}
+	{/loop}
+	<div class="clear"></div>
+	</ul>
+</div>
+<div class="wrap"><div class="cattitle">选择小类</div></div>
+<div class="wrap" id="smallcat">
+	{loop $CACHE[categories] $cat}
+	{if !$cat[fid]}
+	<ul class="categorylist">
+	{loop $CACHE[categories] $cc}
+	{if $cc[fid]==$cat[cid]}
+	<li><a href="post.php?cid=$cc[cid]">$cc[cname]</a></li>
+	{/if}
+	{/loop}
+	<div class="clear"></div>
+	</ul>
+	{/if}
+	{/loop}
+</div>
+<script type="text/javascript">
+$("#smallcat ul").hide();
+$('#bigcat a').click(function(){
+	$('#bigcat a.cur').removeClass();
+	$(this).addClass("cur");
+	//$(this).addClass("cur").siblings().removeClass();
+	$("#smallcat ul").eq($('#bigcat a').index(this)).show().siblings().hide();
+});
+</script>
+<div style="height:100px; clear:both;"></div>
+{template footer}

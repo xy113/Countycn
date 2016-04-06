@@ -1,0 +1,103 @@
+/* CSS Document */
+html,body {font-size:12px; font-family:Arial; color:#333; padding:0; margin:0; height:100%;}
+a:link,a:active,a:visited {color:#333; text-decoration:none;}
+a:hover {color:#FF0000; text-decoration:underline;}
+form,ul,li {padding:0; margin:0; list-style:none;}
+.blank {height:8px; line-height:8px; clear:both; overflow:hidden;}
+.main-div {clear:both; margin:0px 20px; padding-top:10px;}
+#loading {border:5px #666 solid; background:#fff; padding:5px 10px; font-size:13px; line-height:16px; color:#333; position:absolute; display:none;}
+#loading img{float:left; margin-right:6px;}
+#dvMsgbox {padding:25px; line-height:32px;}
+#dvMsgbox b{background:url(global.png) -192px -320px no-repeat; display:inline-block; width:32px; height:32px; margin-right:10px; vertical-align:middle;}
+#dvButton {padding:10px; background:#F6F9FC; text-align:right; border-top:1px #ccc solid;}
+.dialog-overlay {background:#000; filter:alpha(opacity:50); opacity: 0.5}
+.dialog {background:#fff; border:8px #333 solid; border-radius: 3px; min-width:384px;}
+.dialog .bar {background:url(bgx.png) 0 -216px repeat-x; height:26px; line-height:26px; font-size:14px; padding:0 5px; font-weight:bold; color:#fff; cursor:move;}
+.dialog .bar .title{margin-right:10px; float:left;}
+.dialog .bar a {background:url(bg.png) no-repeat scroll -1332px 0px; width:20px; height:20px; margin-top:3px; float:right; cursor:pointer;}
+.dialog .bar a:hover{background:url(bg.png) no-repeat scroll -1332px -36px; width:20px; height:20px; margin-top:3px; float:right;} 
+.dialog .content {font-size:14px; color:#333; background:#fff;}
+.dialog .content p{line-height:150%; padding:10px; margin:0;}
+.dialog .content IFRAME {WIDTH: 100%; HEIGHT: 100%; border:0; padding:25px 10px 30px 75px;}
+.dialog .content IMG {MAX-WIDTH: 700px; OVERFLOW: auto; MAX-HEIGHT: 500px}
+.toptr {background:url(top_bg.png) left bottom repeat-x; height:50px; line-height:50px;}
+.toptr .logo {background:url(logo.png) left bottom no-repeat; width:160px; height:50px;}
+.toptr .mainMenu {position:relative; vertical-align:bottom;}
+.toptr #topMenu {position:relative; height:35px; line-height:35px; vertical-align:bottom; padding-top:15px;}
+.toptr #topMenu li{font:bold 14px/31px "ËÎÌו"; float:left; background:url(nav_line.png) left bottom repeat-x; position:relative; bottom:0;}
+.toptr #topMenu li a{width:80px; display:inline-block; text-align:center; padding-top:4px;}
+.toptr #topMenu li a:hover {text-decoration:none;}
+.toptr #topMenu li a.cur {background:url(nav_now.png) left bottom no-repeat; color:#fff; text-decoration:none; height:31px; position:relative; z-index:100;}
+.toptr #topMenu li.left {background:url(nav_lbg.png) left bottom no-repeat; width:5px; height:35px; float:left;}
+.toptr #topMenu li.right {background:url(nav_rbg.png) left bottom no-repeat; width:5px; height:35px; float:left;}
+.toptr .mainMenu .topmenu{position:absolute; font-weight:400; font-size:12px; text-align:left; top:5px; right:10px; z-index:300;}
+table.main {clear:both; margin:0; padding:0; width:100%;}
+table.main td.leftMenu {width:160px; vertical-align:top; text-align:left; background:#ebebeb; border-right:1px #009933 solid;}
+table.main td.leftMenu span.menu {display:none;}
+table.main td.leftMenu div {background:url(left_nav_bg.png) repeat-x; height:25px; font:bold 12px/25px ''; padding-left:26px; clear:both;}
+table.main td.leftMenu ul {clear:both; text-align:left;}
+table.main td.leftMenu ul li {height:28px; line-height:28px; overflow:hidden;}
+table.main td.leftMenu ul li a{background:url(leftdot.gif) 8px center no-repeat; padding-left:22px; text-decoration:none; display:block;}
+table.main td.leftMenu ul li a:hover,table.main td.leftMenu ul li a.cur{background:url(leftdot.gif) 8px center no-repeat #fff;}
+.yourpos {background:url(position_bg.gif) 0 0 repeat-x; height:32px; line-height:32px; overflow:hidden; padding:0 10px;}
+.yourpos a,.yourpos span{background:url(position_dot.gif) left center no-repeat; height:31px; display:inline-block; padding:0 0 0 20px; margin:0;}
+.yourpos em {float:right; margin-right:10px; background:none; font-weight:bold;}
+.yourpos em a{padding:0 5px; background:none; display:block;}
+.titlediv {clear:both; height:30px; border-bottom:3px #DEEFFA solid; font:400 13px/30px '';}
+.titlediv b,.titlediv strong {color:#0099CC;}
+.titlediv span {font:400 13px ''; color:#333;}
+.titlediv span.right {float:right;}
+.titlediv a.cmenu {color:#000; padding:3px 5px; text-decoration:none;}
+.titlediv a.cmenu-on {color:#fff; padding:3px 5px; background:#666; text-decoration:none;}
+table.formtable {clear:both; text-align:left;}
+table.formtable td,table.formtable th{text-align:left; padding:5px 5px 5px 0; border-bottom:1px #e2e2e2 dotted; background:#fff;}
+table.formtable th {vertical-align:middle;}
+table.formtable td a,table.formtable th a {text-decoration:underline; color:#2366A8;}
+table.formtable td.bold {padding-top:8px; font-weight:bold;}
+table.formtable td.option {padding-top:8px; font-weight:bold;color:#0099CC;}
+table.formtable td li {padding:3px 0;}
+table.formtable tr.hover td{background:#e2e2e2; color:#000;}
+table.formtable tr.hover td a{color:#000;}
+.pagebox{float:right;}
+.pagebox a:link,.pagebox a:visited,.pagebox a:active {text-decoration:none; color:#333;}
+.pagebox a:hover {text-decoration:underline; color:#FF0000;}
+div.addtr {background:url(bg_repno.gif) 0 6px no-repeat; color: #FF6600; width:200px; line-height: 25px; padding-left:17px;}
+div.addtr a:link,div.addtr a:visited,div.addtr a:active{color: #FF6600; text-decoration:none;}
+div.addtr a:hover {text-decoration:underline;}
+label.delete {width:53px; display:inline-block;}
+a.addcat:link,a.addcat:visited,a.addcat:active{background:url(bg_repno.gif) 0 2px no-repeat; color: #FF6600; text-decoration:none; line-height: 25px; padding-left:17px;}
+a.addcat:hover {text-decoration:underline;}
+#typelist a,#optionlist span {margin-right:10px; text-decoration:none;}
+#typelist a.cur {font-weight:bold; color:#333;}
+#optionlist div {display:none;}
+input.text,textarea.text,select.text {border-top:1px #666666 solid; border-left:1px #666666 solid; border-right:1px #CCCCCC solid; border-bottom:1px #CCCCCC solid; width:300px; padding:2px; font:12px Arial; vertical-align:middle;}
+textarea.text {height:100px;}
+input.button {background:#ddd; vertical-align:middle; border-style:solid; border-width:1px; border-color:#ddd #666 #666 #ddd; color:#000; 
+padding:0 10px; height:22px; line-height:22px; margin-right:3px;}
+input.search {width:160px;}
+.button2 {background:-moz-linear-gradient(center top ,#FFFFFF,#DDDDDD) repeat scroll 0 0 #F5F5F5; border:1px #999 solid; 
+padding:4px 7px 3px 7px; display:inline-block; border-radius:2px;font:Arial;font-size:13px;margin-right:5px;vertical-align:middle;color:#000;}
+.button2:hover {border:1px #000 solid;}
+.button2:active {background:-moz-linear-gradient(center top,#DDDDDD,#FFFFFF) repeat scroll 0 0 #BBBBBB;border:1px #999 solid;}
+a.button{display:inline-block; vertical-align:middle; padding:3px 10px; margin-right:3px; background:#ddd; border-style:solid; 
+border-width:1px; border-color:#ddd #666 #666 #ddd; color:#000;}
+a.button:link,a.button:hover,a.button:visited,a.button:active {text-decoration:none; color:#000;}
+a.button span {color:#000; display:block;}
+select.select {padding:1px 3px;border-top:1px #666666 solid; border-left:1px #666666 solid; border-right:1px #CCCCCC solid; border-bottom:1px #CCCCCC solid; vertical-align:middle;}
+input.checkbox {vertical-align:middle; height:14px;}
+input.catbox {width:120px;}
+input.groupbox {width:120px; font-weight:bold;}
+input.order {width:40px;}
+input.text60 {width:60px;}
+input.text100 {width:100px;}
+input.text160 {width:160px;}
+input.text200 {width:200px;}
+h3.tishi {clear:both; height:30px; font:bold 13px/30px ''; color:#0099CC; margin:0 20px;}
+.divmessage {background:#F2F9FD; text-align:center; padding:30px 0; border-bottom:5px #DEEEFA solid; border-top:5px #DEEEFA solid; margin:0 20px; clear:both;}
+.divmessage h3{clear:both; font-size:18px; padding:10px 0; height:24px; line-height:24px; margin:0;}
+.divmessage h3.succeed {color:#009900;}
+.divmessage h3.error{color:#CC0000;}
+.divmessage h3.loading{color:#000;}
+.divmessage p.autoredirect {padding:0; text-align:center; line-height:150%; margin:0; clear:both;}
+.divmessage p.margintop {clear:both; margin:20px 0 0 0; padding:0;}
+#footer{clear:both; padding:10px 0; text-align:center; font-family:Arial;border-top:3px #DEEFFA solid; margin:0 20px;}

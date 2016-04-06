@@ -1,0 +1,142 @@
+<!--{if $operation=='add'||$operation=='edit'}-->
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>联系人信息设置</span>
+</div>
+<div class="main-div">
+<div class="titlediv"><strong>联系人信息设置</strong>　
+	<a href="{$BASESCRIPT}?action=$action" class="cmenu">管理</a>
+	{if $operation=='add'}<a href="{$BASESCRIPT}?action=$action&operation=add" class="cmenu-on">新增</a>{else}<a href="{$BASESCRIPT}?action=$action&operation=edit&id=$id" class="cmenu-on">编辑</a>{/if}
+</div>
+<form method="post" name="contactus" action="{$BASESCRIPT}?action=$action&operation=$operation">
+	<input type="hidden" name="submit" value="yes" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="id" value="$contact[id]">
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+    <tr>
+      <td class="bold" width="360">联系人</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[name]" value="$contact[name]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">联系电话</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[tel]" value="$contact[tel]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">移动电话</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[mobile]" value="$contact[mobile]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">电子邮件</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[email]" value="$contact[email]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">传真</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[fax]" value="$contact[fax]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">QQ号码</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[qq]" value="$contact[qq]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">MSN</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[msn]" value="$contact[msn]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">邮政编码</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[postcode]" value="$contact[postcode]"></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="bold">联系地址</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="text" name="contactnew[address]" value="$contact[address]"></td>
+      <td>&nbsp;</td>
+    </tr>
+	<tr>
+		<td colspan="2"><input type="submit" class="button" name="button-submit" value="$lang[submit]"></td>
+	</tr>
+  </table>
+ </form>
+</div>
+<!--{else}-->
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>联系人信息设置</span>
+</div>
+<div class="main-div">
+	<div class="titlediv"><strong>联系人信息设置</strong>　
+		<a href="{$BASESCRIPT}?action=$action" class="cmenu-on">管理</a>
+		<a href="{$BASESCRIPT}?action=$action&operation=add" class="cmenu">新增</a>
+	</div>
+	<form name="contact" method="post" action="{$BASESCRIPT}?action=$action">
+	<input type="hidden" name="submit" value="yes" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	<tr>
+	  <th width="50"><input type="checkbox" class="checkbox" onClick="checkAll(this,'delete[]')" /> 删?</td>
+	  <th width="120">联系人</th>
+	  <th width="120">联系电话</th>
+	  <th width="120">移动电话</th>
+	  <th width="160">电子邮件</th>
+	  <th width="120">传真</th>
+	  <th width="120">QQ</th>
+	  <th width="160">MSN</th>
+	  <th></th>
+	</tr>
+	<!--{loop $messages $con}-->
+	<tr onMouseOver="this.className='hover'" onMouseOut="this.className=''">
+	  <td><input name="delete[]" type="checkbox" value="{$con[id]}" onClick="checkThis(this)" /></td>
+	  <td>$con[name]</td>
+	  <td>$con[tel]</td>
+	  <td>$con[mobile]</td>
+	  <td>$con[email]</td>
+	  <td>$con[fax]</td>
+	  <td>$con[qq]</td>
+	  <td>$con[msn]</td>
+	  <td><a href="{$BASESCRIPT}?action=contactus&operation=edit&id=$con[id]">编辑</a></td>
+	</tr>
+	<!--{/loop}-->
+	<tr>
+		<td><input type="checkbox" class="checkbox" onClick="checkAll(this,'delete[]')" /> 删?</td>
+		<td colspan="8">
+			<input type="submit" name="button-submit" class="button" value="$lang[submit]" />
+			<input type="button" name="button" class="button" value="$lang[refresh]" onclick="LoadPage()" />
+		</td>
+	</tr>
+  </table>
+  </form>
+</div>
+<!--{/if}-->

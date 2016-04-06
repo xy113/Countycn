@@ -1,0 +1,269 @@
+<?php
+//Xcms! cache file, DO NOT modify me!
+//Created: Jan 3, 2013, 16:59
+//Identify: 53b95a054e84533145403d48b9a00bae
+
+$citydata=array (
+  'cityid' => '41',
+  'provinceid' => '29',
+  'cityname' => 'ÎÚÉó',
+  'citypy' => 'wushen',
+  'cityletter' => 'W',
+  'cityhost' => 'wushen',
+  'displayorder' => '0',
+  'admins' => NULL,
+  'area' => 
+  array (
+    681 => 
+    array (
+      'areaid' => '681',
+      'areaname' => '´ï²¼²ì¿ËÕò',
+    ),
+    682 => 
+    array (
+      'areaid' => '682',
+      'areaname' => 'ÎÚÉóÕÙÕò',
+    ),
+    683 => 
+    array (
+      'areaid' => '683',
+      'areaname' => 'Í¼¿ËÕò',
+    ),
+    684 => 
+    array (
+      'areaid' => '684',
+      'areaname' => 'É³¶ûÀû¸ñÕò',
+    ),
+    685 => 
+    array (
+      'areaid' => '685',
+      'areaname' => 'ÌÕÀûÕò',
+    ),
+    686 => 
+    array (
+      'areaid' => '686',
+      'areaname' => 'ÎÚÀ¼ÌÕÀÕ¸ÇÕò',
+    ),
+    687 => 
+    array (
+      'areaid' => '687',
+      'areaname' => 'ÄÉÁÖºÓÕò',
+    ),
+    688 => 
+    array (
+      'areaid' => '688',
+      'areaname' => 'ºÓÄÏÏç',
+    ),
+    689 => 
+    array (
+      'areaid' => '689',
+      'areaname' => '»ÆÌÕÀÕ¸ÇÏç',
+    ),
+    690 => 
+    array (
+      'areaid' => '690',
+      'areaname' => 'ºô¼ª¶ûÌØÏç',
+    ),
+    691 => 
+    array (
+      'areaid' => '691',
+      'areaname' => 'ÎÚÀ¼É³°Í¶ûÌ¨Ïç',
+    ),
+    692 => 
+    array (
+      'areaid' => '692',
+      'areaname' => 'ºÆÀÕ±¨¼ªÏç',
+    ),
+    693 => 
+    array (
+      'areaid' => '693',
+      'areaname' => '¸ÂÂ³Í¼ËÕÄ¾',
+    ),
+    694 => 
+    array (
+      'areaid' => '694',
+      'areaname' => '°ËÒ»ÄÁ³¡',
+    ),
+    723 => 
+    array (
+      'areaid' => '723',
+      'areaname' => '°ÍÑåºÆÌØÕò',
+    ),
+    724 => 
+    array (
+      'areaid' => '724',
+      'areaname' => '°ÍÈó±ðÁ¢Õò',
+    ),
+    725 => 
+    array (
+      'areaid' => '725',
+      'areaname' => '¼ªÀ¼Ì«Õò',
+    ),
+    726 => 
+    array (
+      'areaid' => '726',
+      'areaname' => '¹ÅÀ­±¾°½°üÕò',
+    ),
+    727 => 
+    array (
+      'areaid' => '727',
+      'areaname' => 'ºôÂ³Ë¹Ì«Õò',
+    ),
+    728 => 
+    array (
+      'areaid' => '728',
+      'areaname' => '¼Î¶û¸ÂÀÕÈüººÕò',
+    ),
+    729 => 
+    array (
+      'areaid' => '729',
+      'areaname' => 'Í¼¿ËÀïÄ¾ËÕÄ¾',
+    ),
+    730 => 
+    array (
+      'areaid' => '730',
+      'areaname' => 'ÎÚÁ¦¼ªËÕÄ¾',
+    ),
+    731 => 
+    array (
+      'areaid' => '731',
+      'areaname' => 'Òø¸ùËÕÄ¾',
+    ),
+    732 => 
+    array (
+      'areaid' => '732',
+      'areaname' => 'º±ÎÚÀ­ËÕÄ¾',
+    ),
+    733 => 
+    array (
+      'areaid' => '733',
+      'areaname' => 'ºé¸ñÈÕ¶õÀãËÕÄ¾',
+    ),
+    734 => 
+    array (
+      'areaid' => '734',
+      'areaname' => '°ÍÑåÄ¾ÈÊËÕÄ¾',
+    ),
+    735 => 
+    array (
+      'areaid' => '735',
+      'areaname' => '°½Â×²¼À­¸ñËÕÄ¾',
+    ),
+    736 => 
+    array (
+      'areaid' => '736',
+      'areaname' => 'ºÀË¹²¼¶û¶¼ËÕÄ¾',
+    ),
+    737 => 
+    array (
+      'areaid' => '737',
+      'areaname' => '¶î¶û¿Ë¹þÊ²¹þËÕÄ¾',
+    ),
+    738 => 
+    array (
+      'areaid' => '738',
+      'areaname' => '²é¸É¶û²¼À­¸ñËÕÄ¾',
+    ),
+    739 => 
+    array (
+      'areaid' => '739',
+      'areaname' => 'ÎÂ¶¼¶ûÀÕÍ¼ËÕÄ¾',
+    ),
+    740 => 
+    array (
+      'areaid' => '740',
+      'areaname' => 'ÌÚ¸ñÀï¶îÀïË¹ËÕÄ¾',
+    ),
+    741 => 
+    array (
+      'areaid' => '741',
+      'areaname' => '²é¹þ¶ûËÕÄ¾',
+    ),
+    742 => 
+    array (
+      'areaid' => '742',
+      'areaname' => 'Í¨¹ÅÀÕ¸ñÄ×¶ûËÕÄ¾',
+    ),
+    743 => 
+    array (
+      'areaid' => '743',
+      'areaname' => '³¬¸ñÍ¼ºôÈÈËÕÄ¾',
+    ),
+    744 => 
+    array (
+      'areaid' => '744',
+      'areaname' => '²¼¹ÅÍ¼ËÕÄ¾',
+    ),
+    745 => 
+    array (
+      'areaid' => '745',
+      'areaname' => 'Ïá¸ù´ïÀ´ËÕÄ¾',
+    ),
+    746 => 
+    array (
+      'areaid' => '746',
+      'areaname' => 'ÎÚËØÍ¼ËÕÄ¾',
+    ),
+    747 => 
+    array (
+      'areaid' => '747',
+      'areaname' => '×Ú±ðÁ¢ËÕÄ¾',
+    ),
+    748 => 
+    array (
+      'areaid' => '748',
+      'areaname' => 'Ä¾ÈÊ¸ßÀÕËÕÄ¾',
+    ),
+    749 => 
+    array (
+      'areaid' => '749',
+      'areaname' => 'ÎýÁÖ¸ßÀÕËÕÄ¾',
+    ),
+    750 => 
+    array (
+      'areaid' => '750',
+      'areaname' => '°ÍÑåÅµÈÕ¹«ËÕÄ¾',
+    ),
+    751 => 
+    array (
+      'areaid' => '751',
+      'areaname' => '°ÙÁéÃíÕò',
+    ),
+    752 => 
+    array (
+      'areaid' => '752',
+      'areaname' => 'Ã÷°²Õò',
+    ),
+    753 => 
+    array (
+      'areaid' => '753',
+      'areaname' => 'Ê¯±¦Õò',
+    ),
+    754 => 
+    array (
+      'areaid' => '754',
+      'areaname' => 'ÎÚ¿Ëºö¶´Õò',
+    ),
+    755 => 
+    array (
+      'areaid' => '755',
+      'areaname' => '°ÍÑå»¨Õò',
+    ),
+    756 => 
+    array (
+      'areaid' => '756',
+      'areaname' => 'Âú¶¼À­Õò',
+    ),
+    757 => 
+    array (
+      'areaid' => '757',
+      'areaname' => '´ï¶ûº¹ËÕÄ¾',
+    ),
+    758 => 
+    array (
+      'areaid' => '758',
+      'areaname' => '°ÍÒô»¨Õò',
+    ),
+  ),
+)
+?>

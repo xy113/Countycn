@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>$lang[sysmessage]</title>
+<link href="images/admincp.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="main-div">
+<div class="messagebox">
+<!--{if $msg_type==0}-->
+<h3 class="ok">{$msg_detail}</h3>
+<!--{elseif $msg_type==1}-->
+<h3 class="error">{$msg_detail}</h3>
+<!--{else}-->
+<h3 class="confirm">{$msg_detail}</h3>
+<!--{/if}-->
+{if $auto_redirect}
+<div class="messagediv" id="redirectionMsg">{$lang[auto_redirect]}</div>
+{else}
+<div class="messagediv" id="redirectionMsg">{$lang[manual_redirect]}</div>
+{/if}
+<div class="messagediv"><img src="images/arrow.gif" border="0" align="absmiddle" width="9" height="9" />
+	{loop $links $link} 
+	<a href="{$link[href]}" target="{$link[target]}">{$link[text]}</a> 
+	{/loop}
+</div>
+</div>
+</div>
+<!--{if $auto_redirect}-->
+<script type="text/javascript">
+<!--
+var seconds = 3;
+var defaultUrl = "{$defaulturl}";
+window.onload = function(){
+  if (defaultUrl == 'javascript:history.go(-1)' && window.history.length == 0){
+    document.getElementById('redirectionMsg').innerHTML = '';
+    return;
+  }
+  window.setInterval(redirection, 1000);
+}
+function redirection(){	
+    if (seconds <= 0){
+    	window.clearInterval();
+    	return;
+    }
+  	seconds --;
+  	document.getElementById('spanSeconds').innerHTML = seconds;
+  	if (seconds == 0){
+    	window.clearInterval();
+    	location.href = defaultUrl;
+  	}
+}
+//-->
+</script>
+<!--{/if}-->
+</body>
+</html>

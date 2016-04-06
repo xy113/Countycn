@@ -1,0 +1,56 @@
+<div class="yourpos">
+	$lang[cp_home]
+	<span>$lang[cplog_manage]</span>
+	<span>$lang[cplog_list]</span>
+</div>
+<div class="main-div">
+	<div class="titlediv">
+		<span class="right">
+			<input type="text" class="text search" id="keywords" value="$keywords" />
+			<input type="button" class="button" value="$lang[search]" onclick="window.location.href=baseurl+'&keywords='+$('#keywords').val();" />
+		</span>
+		<strong>$lang[cplog_list]</strong>　总计{$totalrecords}条记录
+	</div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	<tr>
+	  <th width="30"><input type="checkbox" class="checkbox" onclick="checkAll(this,'id[]')" /></td>
+	  <th width="60">$lang[cplog_admin]</th>
+	  <th width="300">$lang[cplog_body]</th>
+	  <th>$lang[cplog_requesturi]</th>
+	  <th width="80">$lang[cplog_ipaddr]</th>
+	  <th width="100" class="last">$lang[cplog_time]</th>
+	</tr>
+	<!--{loop $cplogs $log}-->
+	<tr onmouseover="this.className='hover'" onmouseout="this.className=''">
+	  <td><input name="id[]" type="checkbox" value="$log[id]" onclick="checkThis(this)" /></td>
+	  <td><a href="$BASESCRIPT?action=cplog&uid=$log[uid]">$log[username]</a></td>
+	  <td>$log[body]</td>
+	  <td>$log[requesturi]</td>
+	  <td><a href="http://www.ip138.com/ips.asp?ip=$log[ipaddr]" target="_blank">$log[ipaddr]</a></td>
+	  <td>$log['dateline']</td>
+	</tr>
+	<!--{/loop}-->
+	<tr>
+		<td colspan="6">
+			<span class="pagebox">$pagelink</span>
+			<a class="button" href="javascript:;" onclick="Delete('id[]','$querystring')"><span>$lang[drop]</span></a>
+			<a class="button" href="javascript:;" onclick="ClearAll()"><span>$lang[cplog_clear]</span></a>
+			<a class="button" href="javascript:;" onclick="Export()"><span>$lang[cplog_export]</span></a>
+		</td>
+	</tr>
+  </table>
+</div>
+<script type="text/javascript">
+function ClearAll(){
+	if(confirm('日志清空后将不能恢复，您确定要清空所有记录吗?')){
+		$.ajax({url:ajaxurl+'&operation=clearall',
+			beforSend:showloading("正在删除信息..."),
+			success:function(response){$("body").html(response)},
+			complete:closeloading()
+		})
+	}
+}
+function Export(){
+	window.open(baseurl+"&operation=export");
+}
+</script>

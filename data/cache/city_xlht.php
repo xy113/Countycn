@@ -1,0 +1,74 @@
+<?php
+//Xcms! cache file, DO NOT modify me!
+//Created: Jan 3, 2013, 17:01
+//Identify: 111105c933b177289e3484504a28dd9f
+
+$citydata=array (
+  'cityid' => '38',
+  'provinceid' => '29',
+  'cityname' => 'ÎýÁÖºÆÌØ',
+  'citypy' => 'xilinhaote',
+  'cityletter' => 'X',
+  'cityhost' => 'xlht',
+  'displayorder' => '0',
+  'admins' => NULL,
+  'area' => 
+  array (
+    629 => 
+    array (
+      'areaid' => '629',
+      'areaname' => 'Ï£ÈÕËþÀ­½ÖµÀ',
+    ),
+    630 => 
+    array (
+      'areaid' => '630',
+      'areaname' => '±¦Á¦¸ù½ÖµÀ',
+    ),
+    631 => 
+    array (
+      'areaid' => '631',
+      'areaname' => 'º¼¸Ç½ÖµÀ',
+    ),
+    632 => 
+    array (
+      'areaid' => '632',
+      'areaname' => '³þ¹ÅÀ¼½ÖµÀ',
+    ),
+    633 => 
+    array (
+      'areaid' => '633',
+      'areaname' => '¶î¶û¶Ø½ÖµÀ',
+    ),
+    634 => 
+    array (
+      'areaid' => '634',
+      'areaname' => 'ÄÏ½¼½ÖµÀ',
+    ),
+    635 => 
+    array (
+      'areaid' => '635',
+      'areaname' => '°ÍÑåÎýÀÕ½ÖµÀ',
+    ),
+    636 => 
+    array (
+      'areaid' => '636',
+      'areaname' => '°¢¶ûÉÆ±¦À­¸ñÕò',
+    ),
+    637 => 
+    array (
+      'areaid' => '637',
+      'areaname' => '±¦Á¦¸ùËÕÄ¾',
+    ),
+    638 => 
+    array (
+      'areaid' => '638',
+      'areaname' => '³¯¿ËÎÚÀ­ËÕÄ¾',
+    ),
+    639 => 
+    array (
+      'areaid' => '639',
+      'areaname' => 'ÊÐÇø',
+    ),
+  ),
+)
+?>

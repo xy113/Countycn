@@ -1,0 +1,102 @@
+{if $operation=='newmail'}
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>系统工具</span>
+	<span>电子邮件</span>
+	<span>新邮件</span>
+</div>
+<div class="main-div">
+	<div class="titlediv">
+		<b>电子邮件</b>　
+		<a href="{$BASESCRIPT}?action=email" class="cmenu">管理</a> 
+		<a href="{$BASESCRIPT}?action=email&operation=edit&mailid=$mailid" class="cmenu-on">新邮件</a>
+	</div>
+	<form method="post" name="newmail" action="{$BASESCRIPT}?action=email&operation=newmail&mailid=$mailid">
+	<input type="hidden" name="submit" value="yes" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      <tr>
+        <td width="360" class="bold">邮件主题</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="newmail[subject]" value="$mail[subject]"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="bold">收件人</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="newmail[mailto]" value="$mail[mailto]"></td>
+        <td>必填，多个收件人请用 “;” 隔开</td>
+      </tr>
+      <tr>
+        <td class="bold">发件人</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="newmail[mailfrom]" value="$mail[mailfrom]"></td>
+        <td>可选</td>
+      </tr>
+      <tr>
+        <td class="bold">同时发送给所有会员<input type="checkbox" class="checkbox" name="mailtoall" value="1"></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="bold">邮件内容</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2">$fckeditor</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" class="button" name="button-submit" value="$lang[submit]"></td>
+      </tr>
+    </table>
+	</form>
+</div>
+{else}
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>系统工具</span>
+	<span>电子邮件</span>
+</div>
+<div class="main-div">
+	<div class="titlediv">
+		<b>电子邮件</b>　
+		<a href="{$BASESCRIPT}?action=email" class="cmenu-on">管理</a> 
+		<a href="{$BASESCRIPT}?action=email&operation=newmail" class="cmuenu">新邮件</a>
+	</div>
+	<form name="mails" method="post" action="{$BASESCRIPT}?action=email">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	  <tr>
+		<th width="50"><input type="checkbox" class="checkbox" onclick="checkAll(this,'delete[]')"> 删?</th>
+		<th width="300">主题</th>
+		<th width="160">发送人</th>
+		<th>收件人</th>
+		<th width="160">发送时间</th>
+		<th width="80"></th>
+	  </tr>
+	  {loop $mails $mail}
+	  <tr>
+		<td><input type="checkbox" class="checkbox" name="delete[]" value="$mail[mailid]"></td>
+		<td>$mail[subject]</td>
+		<td>$mail[mailfrom]</td>
+		<td>$mail[mailto]</td>
+		<td>$mail[dateline]</td>
+		<td><a href="{$BASESCRIPT}?action=email&operation=newmail&mailid=$mail[mailid]">重新发送</a></td>
+	  </tr>
+	  {/loop}
+	  <tr>
+	  	<td><input type="checkbox" class="checkbox" onclick="checkAll(this,'delete[]')"> 删?</td>
+		<td colspan="5">
+			<span class="pagebox">{$pagelink}</span>
+			<input type="submit" name="button-submit" value="$lang[submit]" class="button">
+			<input type="button" name="button" class="button" value="$lang[refresh]" onclick="LoadPage('page=$page')">
+		</td>
+	  </tr>
+	</table>
+	</form>
+</div>
+{/if}

@@ -1,0 +1,337 @@
+<!--{if $operation=='add'||$operation=='edit'}-->
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>管理员管理</span>
+	<span>管理员列表</span>
+	<em><a href="{$BASESCRIPT}?action=admin">返回</a></em>
+</div>
+<div class="main-div">
+	<div class="titlediv">
+		{if $operation=='add'}<strong>添加管理员</strong>{else}<strong>编辑管理员 $adminuser[admin](adminid:$adminuser[adminid])</strong>{/if}　
+		<span id="tab-menu"><a href="#" class="cmenu-on">基本信息</a> <a href="#" class="cmenu">权限设置</a></span>
+	</div>
+  <form id="admin" name="admin" method="post" action="{$BASESCRIPT}?action=admin&operation=$operation">
+  <input type="hidden" name="submit" value="yes" />
+  <input type="hidden" name="formhash" value="{FORMHASH}" />
+  <!--{if $operation=='edit'}-->
+  <input type="hidden" name="adminid" value="$adminuser[adminid]" />
+  <input type="hidden" name="username" value="$adminuser[admin]" />
+  <!--{/if}-->
+  <span id="table-content">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	  {if $operation == 'add'}
+      <tr>
+        <td class="bold" width="360">用户名</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="adminnew[admin]" id="admin_admin" /></td>
+        <td>必填项，不能留空，不能有重复</td>
+      </tr>
+      <tr>
+        <td class="bold">密码</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="password" class="text" name="newpassword" id="admin_password" /></td>
+        <td>必填项，至少6位，不能留空</td>
+      </tr>
+	  {else}
+	  <tr>
+        <td class="bold" width="360">用户名</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>$adminuser[admin]</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="bold">密码</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="password" class="text" name="newpassword" value="" /></td>
+        <td>至少6位，无需修改密码请留空</td>
+      </tr>
+	  {/if}
+      <tr>
+        <td class="bold">真实姓名</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="adminnew[realname]" value="$adminuser[realname]" /></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="bold">电子邮件</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="newemail" value="$adminuser[email]" id="admin_email" /></td>
+        <td>必填项，不能留空</td>
+      </tr>
+      <tr>
+        <td class="bold">所属管理组</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+			<select name="newgroupid" class="text">
+				{loop $CACHE[usergroups] $group}
+				{if $group[type]!='member'}
+				<option value="$group[groupid]"{if $group[groupid]==$adminuser[groupid]} selected="selected"{/if}>$group[groupname]</option>
+				{/if}
+				{/loop}
+			</select>
+		</td>
+        <td>设置管理员所属分组</td>
+      </tr>
+      <tr>
+        <td class="bold">率属于省</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+			<select name="adminnew[provinceid]" class="text">
+				<option value="0">总站</option>
+				{loop $CACHE[province] $province}
+				<option value="$province[provinceid]"{if $province[provinceid]==$adminuser[provinceid]} selected="selected"{/if}>$province[provincename]</option>
+				{/loop}
+			</select>
+		</td>
+        <td>设置管理员所辖省份</td>
+      </tr>
+      <tr>
+        <td class="bold">率属于分站</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+			<select name="adminnew[cityid]" class="text" style="font-size:14px;">
+				<option value="0">总站</option>
+				{loop $CACHE[province] $province}
+				<optgroup label="$province[provincename]">
+				{loop $CACHE[cities] $city}
+				{if $city[provinceid]==$province[provinceid]}
+				<option value="$city[cityid]"{if $city[cityid]==$adminuser[cityid]} selected="selected"{/if}>$city[cityname]</option>
+				{/if}
+				{/loop}
+				</optgroup>
+				{/loop}
+			</select>
+		</td>
+        <td>设置管理员隶属分站，管理员和大区管理无需选择此项。</td>
+      </tr>
+      <tr>
+        <td class="bold">联系电话</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="newtelephone" value="$adminuser[telephone]" /></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="bold">QQ号码</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="text" name="newuserim" value="$adminuser[userim]" /></td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable" style="display:none;">
+      <tr>
+        <td class="bold" width="260">允许管理系统设置</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminsettings]" value="1"{if $adminuser[allowadminsettings]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminsettings]" value="0"{if !$adminuser[allowadminsettings]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置地方允许管理系统设置</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理用户信息</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminmember]" value="1"{if $adminuser[allowadminmember]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminmember]" value="0"{if !$adminuser[allowadminmember]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理会员信息</td>
+      </tr>
+	  	  <tr>
+        <td class="bold">允许管理分站</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminsite]" value="1"{if $adminuser[allowadminsite]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminsite]" value="0"{if !$adminuser[allowadminsite]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理分站信息</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理用户帖子</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminposts]" value="1"{if $adminuser[allowadminposts]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminposts]" value="0"{if !$adminuser[allowadminposts]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理所辖范围内的帖子</td>
+      </tr>
+	   <tr>
+        <td class="bold">允许管理文章</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminarticle]" value="1"{if $adminuser[allowadminarticle]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminarticle]" value="0"{if !$adminuser[allowadminarticle]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理文章</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理数据库</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadmindb]" value="1"{if $adminuser[allowadmindb]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadmindb]" value="0"{if !$adminuser[allowadmindb]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理数据库</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理标签</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadmintag]" value="1"{if $adminuser[allowadmintag]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadmintag]" value="0"{if !$adminuser[allowadmintag]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理标签</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理系统日志</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminlog]" value="1"{if $adminuser[allowadminlog]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminlog]" value="0"{if !$adminuser[allowadminlog]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理系统日志</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理导航</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminnav]" value="1"{if $adminuser[allowadminnav]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminnav]" value="0"{if !$adminuser[allowadminnav]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理导航栏</td>
+      </tr>
+	  <tr>
+        <td class="bold">允许管理友情链接</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+		<input type="radio" name="adminnew[allowadminlink]" value="1"{if $adminuser[allowadminlink]} checked="checked"{/if} /> $lang[yes]　
+        <input type="radio" name="adminnew[allowadminlink]" value="0"{if !$adminuser[allowadminlink]} checked="checked"{/if} /> $lang[no]
+		</td>
+        <td>设置是否允许管理友情链接</td>
+      </tr>
+    </table>
+	</span>
+	<div class="toolbar"><input type="submit" name="button-submit" class="button" value="$lang[submit]" /></div>
+  </form>
+</div>
+<script type="text/javascript">
+$('#tab-menu a').click(function(){
+	$(this).attr("class","cmenu-on").siblings().attr("class","cmenu");
+	$("#table-content > table").eq($('#tab-menu a').index(this)).show().siblings().hide();
+});
+{if $operation=='add'}
+$("#admin").submit(function(){
+	if(!$("#admin_admin").val()){
+		dialog("<p>用户名不能留空，请重新输入</p>",{title:"出错啦"});
+		return false;
+	}
+	if(($("#admin_password").val()).length<6){
+		dialog("<p>密码输入错误，至少6为字符</p>",{title:"出错啦"});
+		return false;
+	}
+	if(!$("#admin_email").val()){
+		dialog("<p>电子邮件不能留空，请重新输入</p>",{title:"出错啦"});
+		return false;
+	}
+	return true;
+});
+{/if}
+</script>
+<!--{else}-->
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>管理员管理</span>
+	<span>管理员列表</span>
+</div>
+<div class="main-div">
+	<div class="titlediv">
+		<span class="right">
+			<form method="get" name="search" action="$BASESCRIPT">
+				<input type="hidden" name="action" value="admin" />
+				<input type="text" class="text search" name="keywords" value="$keywords" />
+				<input type="submit" class="button" value="$lang[search]" />
+			</form>
+		</span>
+		<strong>$lang[cplog_list]</strong>　总计{$totalrecords}条记录　
+		<a href="{$BASESCRIPT}?action=admin" class="cmenu-on">管理</a>
+		<a href="{$BASESCRIPT}?action=admin&operation=add" class="cmenu">添加</a>
+	</div>
+	<form method="post" name="admin" action="{$BASESCRIPT}?action=admin">
+	<input type="hidden" name="submit" value="yes" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	<tr>
+	  <th width="50"><input type="checkbox" class="checkbox" onclick="checkAll(this,'delete[]')" /> 删?</td>
+	  <th width="100">用户名</th>
+	  <th width="100">真实姓名</th>
+	  <th width="140">隶属于</th>
+	  <th width="100">管理组</th>
+	  <th width="140">最后登录时间</th>
+	  <th width="120">最后登录IP</th>
+	  <th></th>
+	</tr>
+	<!--{loop $admins $user}-->
+	<tr onmouseover="this.className='hover'" onmouseout="this.className=''">
+	  <td><input {if $user[isfounder]}disabled="disabled"{else}name="delete[]"{/if} type="checkbox" value="{$user[adminid]}" /></td>
+	  <td>$user[admin]</td>
+	  <td>$user[realname]</td>
+	  <td>$user[cityname]</td>
+	  <td>$user[groupname]</td>
+	  <td>$user[lastvisit]</td>
+	  <td><a href="http://www.ip138.com/ips.asp?ip={$user[lastip]}" target="_blank">{$user[lastip]}</a></td>
+	  <td>{if $isfounder}<a href="{$BASESCRIPT}?action=admin&operation=edit&adminid=$user[adminid]">编辑</a>{/if}</td>
+	</tr>
+	<!--{/loop}-->
+	<tr>
+		<td><input type="checkbox" class="checkbox" onclick="checkAll(this,'delete[]')" /> 删?</td>
+		<td colspan="7">
+			<span class="pagebox">{$pagelink}</span>
+			<input type="submit" name="button-submit" class="button" value="$lang[submit]" />
+			<input type="button" name="" class="button" value="$lang[refresh]" onclick="LoadPage('keywords=$keywords&page=$page')" />
+		</td>
+	</tr>
+  </table>
+  </form>
+</div>
+<!--{/if}-->

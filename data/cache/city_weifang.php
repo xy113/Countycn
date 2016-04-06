@@ -1,0 +1,49 @@
+<?php
+//Xcms! cache file, DO NOT modify me!
+//Created: Jan 3, 2013, 16:58
+//Identify: 59c27e0322ecf06df0e4f0914300a0d3
+
+$citydata=array (
+  'cityid' => '169',
+  'provinceid' => '11',
+  'cityname' => 'Î«·»',
+  'citypy' => 'weifang',
+  'cityletter' => 'F',
+  'cityhost' => 'weifang',
+  'displayorder' => '0',
+  'admins' => '',
+  'area' => 
+  array (
+    3079 => 
+    array (
+      'areaid' => '3079',
+      'areaname' => '·ï»Ë½ÖµÀ',
+    ),
+    3080 => 
+    array (
+      'areaid' => '3080',
+      'areaname' => '·»°²½ÖµÀ',
+    ),
+    3081 => 
+    array (
+      'areaid' => '3081',
+      'areaname' => '·»³Ç½ÖµÀ',
+    ),
+    3082 => 
+    array (
+      'areaid' => '3082',
+      'areaname' => '¾ÅÁú½ÖµÀ',
+    ),
+    3083 => 
+    array (
+      'areaid' => '3083',
+      'areaname' => '»ÆÆì±¤½ÖµÀ',
+    ),
+    3084 => 
+    array (
+      'areaid' => '3084',
+      'areaname' => '·»´ÄÐ¡Õò',
+    ),
+  ),
+)
+?>

@@ -1,0 +1,58 @@
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>数据统计</span>
+</div>
+<div class="main-div">
+	<div class="titlediv">
+		<span class="right">
+		选择年份
+		<select name="year" onchange="window.location.href=baseurl+'&year='+this.value">
+			<option value="2012"{if $year=='2012'} selected="selected"{/if}>2012</option>
+			<option value="2011"{if $year=='2011'} selected="selected"{/if}>2011</option>
+			<option value="2010"{if $year=='2010'} selected="selected"{/if}>2010</option>
+			<option value="2009"{if $year=='2009'} selected="selected"{/if}>2009</option>
+			<option value="2008"{if $year=='2008'} selected="selected"{/if}>2008</option>
+		</select>
+		</span>
+		<strong>数据统计</strong>
+	</div>
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      <tr>
+        <th width="100">分站名称</th>
+        <th width="70">十二月</th>
+        <th width="70">十一月</th>
+        <th width="70">十月</th>
+        <th width="70">九月</th>
+        <th width="70">八月</th>
+        <th width="70">七月</th>
+        <th width="70">六月</th>
+        <th width="70">五月</th>
+        <th width="70">四月</th>
+        <th width="70">三月</th>
+        <th width="70">二月</th>
+        <th width="70">一月</th>
+      </tr>
+	  {loop $cities $city}
+      <tr onmouseover="this.className='hover'" onmouseout="this.className=''">
+        <td><strong>$city[cityname]</strong></td>
+        <td>$city[month12]</td>
+        <td>$city[month11]</td>
+        <td>$city[month10]</td>
+        <td>$city[month9]</td>
+        <td>$city[month8]</td>
+        <td>$city[month7]</td>
+        <td>$city[month6]</td>
+        <td>$city[month5]</td>
+        <td>$city[month4]</td>
+        <td>$city[month3]</td>
+        <td>$city[month2]</td>
+        <td>$city[month1]</td>
+      </tr>
+	  {/loop}
+	  <tr>
+	  	<td colspan="13"><span class="pagebox">{$pagelink}</span>
+		<a href="javascript:;" class="button" onclick="if(confirm('此操作比较耗费系统资源，若无需要请不要频繁操作。')){window.open(baseurl+'&operation=export&year=$year');}"><span>保存为CSV表</span></a>
+		</td>
+	  </tr>
+    </table>
+</div>

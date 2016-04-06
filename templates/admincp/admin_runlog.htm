@@ -1,0 +1,30 @@
+<div class="yourpos">
+	$lang[cp_home]
+	<span>运行记录</span>
+</div>
+<div class="main-div">
+	<div class="titlediv"><b>运行记录</b>　总计{$totalrecords}条记录</div>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	<tr>
+	  <th width="80">$lang[cplog_admin]</th>
+	  <th width="300">$lang[cplog_body]</th>
+	  <th>$lang[cplog_requesturi]</th>
+	  <th width="120">$lang[cplog_ipaddr]</th>
+	  <th width="100" class="last">$lang[cplog_time]</th>
+	</tr>
+	<!--{loop $cplogs $log}-->
+	<tr onmouseover="this.className='hover'" onmouseout="this.className=''">
+	  <td>$log[username]</td>
+	  <td>$log[body]</td>
+	  <td>$log[requesturi]</td>
+	  <td><a href="http://www.ip138.com/ips.asp?ip=$log[ipaddr]" target="_blank">$log[ipaddr]</a></td>
+	  <td>$log[dateline]</td>
+	</tr>
+	<!--{/loop}-->
+	<tr>
+		<td colspan="5">
+			<span class="pagebox">$pagelink</span>
+		</td>
+	</tr>
+  </table>
+</div>

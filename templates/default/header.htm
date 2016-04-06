@@ -1,0 +1,30 @@
+<div class="top">
+	<div class="wrap">
+		{if $_XCOOKIE[username] && $_XCOOKIE[password]}
+		<span>
+			<a href="profile.php">$_XCOOKIE[username]</a>　
+			<a href="javascript:;" onclick="window.location='$config[siteurl]/login.php?action=logout&next='+encodeURIComponent(location.href);return false;">退出登录</a>  
+		</span>
+		{else}
+		<span>
+		<a href="javascript:;" onclick="window.location='$config[siteurl]/register.php?next='+encodeURIComponent(location.href);return false;">免费注册</a>  
+		<a href="javascript:;" onclick="window.location='$config[siteurl]/login.php?next='+encodeURIComponent(location.href);return false;">会员登录</a>
+		</span>
+		{/if}
+		<a href="$config[siteurl]"><b>{$citydata[cityname]}</b> [切换城市]</a>
+	</div>
+</div>
+<div class="banner">
+	<div class="wrap">
+		<a href="/post.php?cid=$catdata[cid]" class="btn-post"><b></b>免费发布信息</a>
+		<span class="logo"><img src="images/logo.gif" border="0" /></span>
+		<div class="sreachbox">
+			<form method="get">
+				<input type="hidden" name="city" value="$city" />
+				<input type="text" class="search-key" />
+				<input type="submit" class="search-btn" value="搜索" />
+			</form>
+		</div>
+	</div>
+</div>
+<div class="blank"></div>

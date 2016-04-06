@@ -1,0 +1,62 @@
+<?php if(!defined('IN_XSCMS')) exit('Access Denied'); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>修改资料_<?php echo $_XCOOKIE['username']?>-会员中心</title>
+<link rel="stylesheet" type="text/css" href="/static/images/profile.css">
+<script src="static/js/jquery.js" type="text/javascript"></script>
+<script src="static/js/common.js" type="text/javascript"></script>
+<script src="static/calendar/WdatePicker.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="blueBar"></div>
+<div class="wrap" id="head">
+<div id="headNav">
+<div class="inner">
+<span class="account"><a href="profile.php"><?php echo $_XCOOKIE['username']?></a>　<a href="profile.php?action=logout">退出登录</a></span>
+<a href="profile.php">会员中心首页</a> - 修改资料
+</div>
+</div>
+<div id="vlogo"><a href="<?php echo $config['siteurl']?>"><img src="static/images/viplogo.png" border="0" /></a></div>
+</div>
+<div class="wrap">
+<div class="vipleft">
+<h2>信息管理：</h2>
+<div class="nav">
+<a class="icon01" href="profile.php">我发布的信息</a>
+</div>
+<h2>账户管理：</h2>
+<div class="nav">
+<a class="icon07" href="profile.php?mod=mdinfo">修改资料</a>
+<a class="icon01" href="profile.php?mod=mdpass">修改密码</a>
+</div>
+</div>
+<div class="vipright">
+<div class="vipbody" id="profile">
+<form method="post" action="profile.php?mod=mdinfo&amp;action=saveinfo">
+ 	<div class="dvitem"><label>登录名：</label><b><?php echo $_XCOOKIE['username']?></b></div>
+<div class="dvitem"><label>真实姓名：</label><input type="text" class="text" name="newmember[realname]" value="<?php echo $member['realname']?>" /></div>
+<div class="dvitem"><label>电子邮件：</label><input type="text" class="text" name="newmember[email]" value="<?php echo $member['email']?>" /></div>
+<div class="dvitem"><label>性别：</label><input name="newmember[usersex]" type="radio" value="1"
+<?php if($member['usersex']) { ?>
+ checked="checked"
+<? } ?>
+ /> 男　<input name="newmember[usersex]" type="radio" value="0"
+<?php if(!$member['usersex']) { ?>
+ checked="checked"
+<? } ?>
+ /> 女</div>
+<div class="dvitem"><label>联系电话：</label><input type="text" class="text" name="newmember[telephone]" value="<?php echo $member['telephone']?>" /></div>
+<div class="dvitem"><label>QQ号码：</label><input type="text" class="text" name="newmember[userim]" value="<?php echo $member['userim']?>" /></div>
+<div class="dvitem"><label>生日：</label><input type="text" class="text" name="newmember[birthday]" value="<?php echo $member['birthday']?>" onclick="WdatePicker()" /></div>
+<div class="dvitem"><label></label><input type="submit" value="立即修改资料" class="button" /></div>
+</form>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+<div id="footer">关于我们 - 渠道合作 - 帮助中心 - 修改/删除信息 - 友情链接 - 招贤纳士 - 区县导航</div>
+</body>
+</html>

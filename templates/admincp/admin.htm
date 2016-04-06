@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{$lang[app_name]}</title>
+<script type="text/javascript" src="static/js/jquery.js"></script>
+<script type="text/javascript" src="static/js/common.js"></script>
+<script type="text/javascript" src="static/js/jquery.dialog.js"></script>
+<link href="/static/images/admincp.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="overflow:hidden;">
+<table border="0" cellspacing="0" cellpadding="0" class="main" id="Main">
+  <tr class="toptr">
+  <td class="logo"></td>
+  <td class="mainMenu">
+    <div class="topmenu">欢迎您：$admincp[username]　级别：{if $isfounder}创始人{else}$admincp[groupname]{/if} | <a href="{$BASESCRIPT}?action=logout" target="_top">安全退出</a> | <a href="./" target="_blank">网站首页</a></div>
+  	<ul id="topMenu">
+		<li class="left"></li>
+		<li><a href="javascript:;" id="header_index" class="cur" onclick="toggleMenu('index','index')">$lang[header_index]</a></li>
+		$headers
+		<li class="right"></li>
+	</ul>
+  </td>
+  </tr>
+  <tr>
+    <td width="160" class="leftMenu" id="leftFrame">
+		<span id="menu_index">
+		<div>常用操作</div>
+		<ul>
+			<li><a href="{$BASESCRIPT}?action=threads" onclick="SwitchMenu(this)" target="mainframe">信息管理</a></li>
+			<li><a href="{$BASESCRIPT}?action=runlog" onclick="SwitchMenu(this)" target="mainframe">运行记录</a></li>
+			<li><a href="{$BASESCRIPT}?action=feedback" onclick="SwitchMenu(this)" target="mainframe">用户反馈</a></li>
+		</ul>
+		</span>
+		{$menus}
+	</td>
+    <td class="mainFrame" valign="top"><iframe frameborder="0" name="mainframe" id="mainframe" src="{$BASESCRIPT}?action=index" style="width:100%; height:100%; overflow:visible;"></iframe></td>
+  </tr>
+</table>
+<script type="text/javascript">
+var ADMINSCRIPT = '{$BASESCRIPT}';
+$("#Main").height($(document).height());
+$("#leftFrame").height($(document).height()-50);
+$("#mainframe").height($(document).height()-50);
+var headers = new Array('index','settings','user','site','info','article','template','tool','task');
+function SwitchMenu(obj){
+	if(!obj)return;
+	var li = obj.parentNode;
+    var items = li.parentNode.getElementsByTagName('a');
+	for(i=0;i<items.length;i++){
+	    if(obj==items[i]){
+		    items[i].className = 'cur';
+		}else{
+		    items[i].className = '';
+		}
+	}
+}
+function toggleMenu(menukey,url){
+    if(!menukey || !$$('header_' + menukey)) {
+		return;
+	}
+	for(var k in top.headers) {
+		if($$('menu_' + headers[k])) {
+			$$('menu_' + headers[k]).style.display = headers[k] == menukey ? '' : 'none';
+		}
+	}
+    var hrefs = $$('topMenu').getElementsByTagName('a');
+	for(i=0;i<hrefs.length;i++){
+	    hrefs[i].className='';
+	}
+	$$('header_'+menukey).className = 'cur';
+	if(url){
+		var uls = $$('leftFrame').getElementsByTagName('span');
+		for(j=0; j<uls.length; j++){
+			uls[j].style.displey = 'none';
+		}
+		if($$('menu_'+menukey))$$('menu_'+menukey).style.display = 'block';
+		parent.mainframe.location = ADMINSCRIPT+'?action='+url;
+	}
+	return false;
+}
+function $$(a){
+	return document.getElementById(a);
+}
+</script>
+</body>
+</html>

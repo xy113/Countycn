@@ -1,0 +1,95 @@
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>信息管理</span>
+	<span>添加分类信息选项</span>
+</div>
+<div class="main-div">
+	<div class="titlediv"><b>$threadtype[typename] － 添加分类信息选项</b>　</div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	  <tr>
+		<td id="typelist">
+		<!--{loop $typeoptions[0] $tc}-->
+		<a href="javascript:;">$tc[title]</a>
+		<!--{/loop}-->
+		</td>
+	  </tr>
+	  <tr>
+		<td id="optionlist">
+		{loop $typeoptions[0] $tc}
+		<div>
+			{loop $typeoptions[$tc[optionid]] $to}
+			<span><input type="checkbox" class="checkbox" name="typeselect" value="$to[optionid]" onclick="insertOption(this,this.value)"{if $to[checked]} checked="checked"{/if}> $to[title]</span>
+			{/loop}
+		</div>
+		{/loop}
+		</td>
+	  </tr>
+	</table>
+	<div class="titlediv"><b>$threadtype[typename] － 已有的选项</b>　</div>
+	<form name="typeoptions" method="post" action="{$BASESCRIPT}?action=threadtypes&operation=typedetail">
+	<input type="hidden" name="typeid" value="$typeid">
+	<input type="hidden" name="submit" value="true">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+	  <tr>
+		<th width="50"><input type="checkbox" class="checkbox" onclick="checkAll(this,'delete[]')"> 删?</th>
+		<th width="100">显示顺序</th>
+		<th width="60">可用</th>
+		<th width="160">名称</th>
+		<th width="200">类型</th>
+		<th width="60">必填</th>
+		<th width="80">不可修改</th>
+		<th width="80">参与搜索</th>
+		<th>&nbsp;</th>
+	  </tr>
+	  <tbody id="theoptions">
+	  {loop $options $op}
+	  <tr id="option_$op[optionid]">
+		<td><input type="checkbox" class="checkbox" name="delete[]" value="$op[optionid]"></td>
+		<td><input type="text" class="text order" name="displayorder[{$op[optionid]}]" value="$op[displayorder]"></td>
+		<td><input type="checkbox" class="checkbox" value="1" name="available[{$op[optionid]}]"{if $op[available]} checked="checked"{/if}></td>
+		<td>$op[title]</td>
+		<td>$op[typename]($op[type])</td>
+		<td><input type="checkbox" class="checkbox" value="1" name="required[{$op[optionid]}]"{if $op[required]} checked="checked"{/if}></td>
+		<td><input type="checkbox" class="checkbox" value="1" name="unchangeable[{$op[optionid]}]"{if $op[unchangeable]} checked="checked"{/if}></td>
+		<td><input type="checkbox" class="checkbox" value="1" name="search[{$op[optionid]}]"{if $op[search]} checked="checked"{/if}></td>
+		<td><a href="{$BASESCRIPT}?action=threadtypes&operation=optiondetail&optionid=$op[optionid]">编辑</a></td>
+	  </tr>
+	  {/loop}
+	  </tbody>
+	  <tr>
+	  	<td colspan="9">
+			<input type="submit" class="button" value="{$lang[submit]}"> 
+			<input type="button" class="button" value="$lang[refresh]" onClick="LoadPage('operation=typedetail&typeid=$typeid')">
+		</td>
+	  </tr>
+	</table>
+	</form>
+</div>
+<script type="text/javascript">
+$('#typelist a:first').addClass('cur');
+$("#optionlist div:first").show();
+$('#typelist a').click(function(){
+	$(this).addClass("cur").siblings().removeClass();
+	$("#optionlist div").eq($('#typelist a').index(this)).show().siblings().hide();
+});
+var optiondata = new Array();
+{loop $optionall $to}
+optiondata[{$to[optionid]}] = {'optionid':$to[optionid],'title':'$to[title]','type':'$to[typename]($to[type])'}
+{/loop}
+function insertOption(option,key){
+	if(option.checked){
+		var data = optiondata[key];
+		$("#theoptions").append('<tr id="option_'+data['optionid']+'">'+
+		'<td><input type="checkbox" class="checkbox" value="'+data['optionid']+'" name="delete[]" value="'+data['optionid']+'"></td>'+
+		'<td><input type="text" class="text order" value="0" name="displayorder['+data['optionid']+']"></td>'+
+		'<td><input type="checkbox" class="checkbox" value="1" name="available['+data['optionid']+']"></td>'+
+		'<td>'+data['title']+'</td><td>'+data['type']+'</td>'+
+		'<td><input type="checkbox" class="checkbox" value="1" name="required['+data['optionid']+']"></td>'+
+		'<td><input type="checkbox" class="checkbox" value="1" name="unchangeable['+data['optionid']+']"></td>'+
+		'<td><input type="checkbox" class="checkbox" value="1" name="search['+data['optionid']+']"></td>'+
+		'<td><a href="{$BASESCRIPT}?action=threadtypes&operation=optiondetail&optionid='+data['optionid']+'">编辑</a></td></tr>');
+	}else{
+		$("#option_"+key).remove();
+	}
+}
+</script>

@@ -1,0 +1,43 @@
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>文件权限检查</span>
+</div>
+<div class="main-div">
+	<div class="titlediv"><strong>文件权限检查</strong></div>
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      <tr>
+        <th width="300">文件名</th>
+        <th width="80">可读</th>
+        <th width="80">可写</th>
+        <th width="80">可执行</th>
+		<th>修改时间</th>
+      </tr>
+	  {if $parent}
+      <tr>
+        <td><img src="$parent[img]" border="0" align="absmiddle"> <a href="$parent[folderlink]">$parent[filename]</a></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+		<td></td>
+      </tr>
+	  {/if}
+	  {loop $folders $fd}
+      <tr>
+        <td><img src="$fd[img]" border="0" align="absmiddle"> <a href="$fd[folderlink]">$fd[filename]</a></td>
+        <td><img src="images/yes.gif" border="0"></td>
+        <td><img src="images/{if $fd[writeable]}yes.gif{else}no.gif{/if}" border="0"></td>
+		<td></td>
+        <td>$fd[filetime]</td>
+      </tr>
+	  {/loop}
+	  {loop $filelist $ff}
+      <tr>
+        <td><img src="$ff[img]" border="0" align="absmiddle"> $ff[filename]</td>
+        <td><img src="images/{if $ff[readable]}yes.gif{else}no.gif{/if}" border="0"></td>
+        <td><img src="images/{if $ff[writeable]}yes.gif{else}no.gif{/if}" border="0"></td>
+		<td><img src="images/{if $ff[execable]}yes.gif{else}no.gif{/if}" border="0"></td>
+        <td>$ff[filetime]</td>
+      </tr>
+	  {/loop}
+    </table>
+</div>

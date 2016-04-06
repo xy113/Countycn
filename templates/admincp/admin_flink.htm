@@ -1,0 +1,118 @@
+{if $operation=='edit'}
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>系统公告</span>
+	<span>友情链接</span>
+	<span>链接管理</span>
+</div>
+<div class="main-div">
+	<div class="titlediv"><b>友情链接</b>
+		<a href="{$BASESCRIPT}?action=flink" class="cmenu">链接管理</a>
+		<a href="{$BASESCRIPT}?action=flink&operation=edit&siteid=$siteid" class="cmenu-on">编辑链接</a>
+	</div>
+	<form method="post" action="{$BASESCRIPT}?action=flink&operation=edit">
+	<input type="hidden" name="submit" value="yes">
+	<input type="hidden" name="siteid" value="$siteid">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+		<tr>
+		  <td width="360" class="bold">网站名称</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td><input type="text" class="text" name="flink[sitename]" value="$flink[sitename]"></td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td class="bold">网站地址</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td><input type="text" class="text" name="flink[siteurl]" value="$flink[siteurl]"></td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td class="bold">LOGO图片</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td><input type="text" class="text" name="flink[logo]" value="$flink[logo]"></td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td class="bold">显示顺序</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td><input type="text" class="text" name="flink[displayorder]" value="$flink[displayorder]"></td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td class="bold">网站描述</td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td><textarea name="flink[description]" class="text">$flink[description]</textarea></td>
+		  <td>&nbsp;</td>
+		</tr>
+		<tr>
+		  <td><input type="submit" class="button" name="button-submit" value="$lang[submit]"></td>
+		  <td>&nbsp;</td>
+		</tr>
+	  </table>
+  </form>
+</div>
+{else}
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>系统公告</span>
+	<span>友情链接</span>
+	<span>链接管理</span>
+</div>
+<div class="main-div">
+	<div class="titlediv"><b>友情链接</b></div>
+	<form method="post" name="flink" action="{$BASESCRIPT}?action=flink">
+	<input type="hidden" name="submit" value="yes">
+  	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      <tr>
+        <th width="50"><input type="checkbox" class="checkbox" onClick="checkAll(this,'delete[]')"> 删?</th>
+        <th width="150">网站名称</th>
+        <th width="300">网站地址</th>
+        <th width="100">显示顺序</th>
+        <th width="80">是否显示</th>
+        <th>&nbsp;</th>
+      </tr>
+	  <tbody id="flinklist">
+	  {loop $flinks $link}
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="delete[]" value="$link[siteid]"></td>
+        <td><input type="text" class="text" value="$link[sitename]" name="flink[{$link[siteid]}][sitename]" style="width:130px;"></td>
+        <td><input type="text" class="text" value="$link[siteurl]" name="flink[{$link[siteid]}][siteurl]" style="width:210px;"></td>
+        <td><input type="text" class="text order" value="$link[displayorder]" name="flink[{$link[siteid]}][displayorder]"></td>
+        <td><input type="checkbox" class="checkbox" value="1" name="flink[{$link[siteid]}][display]"{if $link[display]} checked="checked"{/if}></td>
+        <td><a href="{$BASESCRIPT}?action=flink&operation=edit&siteid=$link[siteid]">编辑</a></td>
+      </tr>
+	  {/loop}
+	  </tbody>
+      <tr>
+        <td></td>
+        <td colspan="5"><div class="addtr"><a href="javascript:;" onclick="addLink()">新增链接</a></div></td>
+      </tr>
+	  <tr>
+        <td><input type="checkbox" class="checkbox" onClick="checkAll(this,'delete[]')"> 删?</td>
+        <td colspan="5">
+			<span class="pagebox" style="float:right;">{$pagelink}</span>
+			<input type="submit" name="button-submit" class="button" value="$lang[submit]">
+			<input type="button" class="button" value="$lang[refresh]" onclick="LoadPage('page=$page')">
+		</td>
+      </tr>
+    </table>
+	</form>
+</div>
+<script type="text/javascript">
+function addLink(){
+	$("#flinklist").append('<tr><td></td><td><input type="text" class="text" name="newsitename[]" style="width:130px;"></td>'+
+        '<td><input type="text" class="text" name="newsiteurl[]" style="width:210px;"></td>'+
+        '<td><input type="text" class="text order" name="neworder[]" value="0"></td><td><input type="checkbox" class="checkbox" value="1" name="newdisplay[]"></td><td></td></tr>');
+}
+</script>
+{/if}

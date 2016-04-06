@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{$thread[title]}_{$catdata[cname]}_{$citydata[cityname]}_{$config[sitename]}</title>
+<meta name="keywords" content="$thread[title]" />
+<meta name="description" content="$thread[description]" />
+<script src="static/js/jquery.js" type="text/javascript"></script>
+<script src="static/js/common.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/static/images/css.css">
+</head>
+
+<body>
+<div class="wrap" id="top2">
+<span>
+	{if $_XCOOKIE[username] && $_XCOOKIE[password]}
+	<a href="$config[siteurl]/profile.php">$_XCOOKIE[username]</a>　
+	<a href="javascript:;" onclick="window.location='$config[siteurl]/login.php?action=logout&next='+encodeURIComponent(location.href);return false;">退出登录</a>  
+	{else}
+	<a href="javascript:;" onclick="window.location='$config[siteurl]/register.php?next='+encodeURIComponent(location.href);return false;">免费注册</a> | 
+	<a href="javascript:;" onclick="window.location='$config[siteurl]/login.php?next='+encodeURIComponent(location.href);return false;">会员登录</a> | 
+	{/if}
+	<a href="/post.php?cityid=$thread[cityid]&cid=$thread[cid]">
+	<b>免费发布信息</b></a>
+</span>
+<a href="/"><img src="images/logo-small.png" border="0" class="logo" align="left" /></a>　
+<b><a href="http://{$citydata[cityhost]}.{$config[domain]}">{$citydata[cityname]}</a></b>
+<a href="$config[siteurl]">[切换城市]</a>　
+<a href="http://{$citydata[cityhost]}.{$config[domain]}">$citydata[cityname]分类信息</a> > 
+<a href="http://{$citydata[cityhost]}.{$config[domain]}/$CACHE[categories][$catdata[fid]][pinyin].html">$CACHE[categories][$catdata[fid]][cname]</a> > 
+<a href="http://{$citydata[cityhost]}.{$config[domain]}/$catdata[pinyin].html">$catdata[cname]</a> 
+</div>
+<div class="wrap">
+	<div class="tishi">县域中国提醒您：让您<font color="#FF0000">提前汇款</font>或者<font color="#FF0000">不见面交易</font>的都是骗子！</div>
+	<h1 class="posttitle">$thread[title]</h1>
+	<div class="posttime">
+	<span>信息编号：$thread[postno]　　<a href="/edit.php?tid=$thread[tid]">修改</a> | <a href="/edit.php?action=delete&tid=$thread[tid]">删除</a><!-- | <a href="#">置顶</a> --></span>
+	发布时间：$thread[pbtime]　该信息被浏览 $thread[views] 次 </div>
+</div>
+<div class="wrap" id="detail">
+	<div class="left">
+		<div id="postdetail">
+			<div class="contact" id="dv1">
+				<div>地点：$citydata[cityname] {if $thread[areaname]}- $thread[areaname]{/if} {if $thread[streetname]}- $thread[streetname]{/if}</div>
+				<div>联系人：$thread[contactto]</div>
+				<div>联系电话：<img src="/source/include/image.php?txt=$thread[tel]" align="absmiddle" />　<a href="http://www.ip138.com:8080/search.asp?action=mobile&mobile=$thread[tel]" target="_blank">查询号码归属地</a></div>
+				{if $thread[userim]}<div>QQ：<img src="/source/include/image.php?txt=$thread[userim]" align="absmiddle" /></div>{/if}
+			</div>
+			{if $threadoptions}
+			<div class="extra" id="dv2">
+				<ul>
+					{loop $threadoptions $option}
+					<li>$option[title]：{$option[value]}</li>
+					{/loop}
+				</ul>
+			</div>
+			{/if}
+			<div class="blank"></div>
+			<p class="body">$thread[body]</p>
+		</div>
+		<div class="ad3">
+			<script type="text/javascript">
+			/*728*90，创建于2011-5-21*/
+			var cpro_id = "u483185";
+			</script>
+			<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+		</div>
+		<div class="ad3">
+			<script type="text/javascript"><!--
+			google_ad_client = "ca-pub-7306822352785197";
+			/* 728x90, 创建于 10-5-27 */
+			google_ad_slot = "4644227153";
+			google_ad_width = 728;
+			google_ad_height = 90;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+	</div>
+	<div class="right">
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-7306822352785197";
+	/* 250x250, 创建于 10-6-8 */
+	google_ad_slot = "0436908022";
+	google_ad_width = 250;
+	google_ad_height = 250;
+	//-->
+	</script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+	<div class="blank"></div>
+	<script type="text/javascript">
+	/*250*250，创建于2011-7-8*/
+	var cpro_id = "u532828";
+	</script>
+	<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+	</div>
+	<div class="clear"></div>
+</div>
+{template footer}

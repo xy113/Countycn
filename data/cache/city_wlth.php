@@ -1,0 +1,74 @@
+<?php
+//Xcms! cache file, DO NOT modify me!
+//Created: Jan 3, 2013, 16:59
+//Identify: b488540c2c1533079f982bbf546d3b33
+
+$citydata=array (
+  'cityid' => '72',
+  'provinceid' => '29',
+  'cityname' => 'ÎÚÀ­ÌØºóÆì',
+  'citypy' => 'wulatehouqi',
+  'cityletter' => 'W',
+  'cityhost' => 'wlth',
+  'displayorder' => '0',
+  'admins' => NULL,
+  'area' => 
+  array (
+    1264 => 
+    array (
+      'areaid' => '1264',
+      'areaname' => 'ÊÐÇø',
+    ),
+    1265 => 
+    array (
+      'areaid' => '1265',
+      'areaname' => '°ÍÒô±¦Á¦¸ñÕò',
+    ),
+    1266 => 
+    array (
+      'areaid' => '1266',
+      'areaname' => 'ºôºÍÎÂ¶¼¶ûÕò',
+    ),
+    1267 => 
+    array (
+      'areaid' => '1267',
+      'areaname' => 'ÈüÎÚËØÕò',
+    ),
+    1268 => 
+    array (
+      'areaid' => '1268',
+      'areaname' => 'ÎÚ¸ù¸ßÀÕËÕÄ¾',
+    ),
+    1269 => 
+    array (
+      'areaid' => '1269',
+      'areaname' => 'ÄÇÈÊ±¦Á¦¸ñËÕÄ¾',
+    ),
+    1270 => 
+    array (
+      'areaid' => '1270',
+      'areaname' => '°ÍÒô¸ê±ÚËÕÄ¾',
+    ),
+    1271 => 
+    array (
+      'areaid' => '1271',
+      'areaname' => '°ÍÒôÎÂ¶¼¶ûËÕÄ¾',
+    ),
+    1272 => 
+    array (
+      'areaid' => '1272',
+      'areaname' => 'ÎÚÁ¦¼ªËÕÄ¾',
+    ),
+    1273 => 
+    array (
+      'areaid' => '1273',
+      'areaname' => '±¦ÒôÍ¼ËÕÄ¾',
+    ),
+    1274 => 
+    array (
+      'areaid' => '1274',
+      'areaname' => '°ÍÒôÇ°´ïÃÅËÕÄ¾',
+    ),
+  ),
+)
+?>

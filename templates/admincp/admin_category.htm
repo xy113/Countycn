@@ -1,0 +1,68 @@
+<div class="yourpos">
+	{$lang[cp_home]}
+	<span>信息分类管理</span>
+	<span>信息分类列表</span>
+</div>
+<div class="main-div">
+  <div class="titlediv"><strong>信息分类列表</strong></div>
+  <form method="post" name="categories" action="{$BASESCRIPT}?action=category">
+  <input type="hidden" name="submit" value="true" />
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+    <thead>
+	<tr>
+	  <th width="50">ID</th>
+	  <th width="280">分类名称</th>
+	  <th width="180">英文名称或拼音</th>
+	  <th width="80">排序</th>
+	  <th width="80">信息数</th>
+	  <th>选项</th>
+	</tr>
+	</thead>
+	<!--{loop $categories[0] $cat}-->
+	<tbody id="body_$cat[cid]">
+	<tr onmouseover="this.className='hover'" onmouseout="this.className=''">
+	  <td>$cat[cid]</td>
+	  <td><input type="text" class="text groupbox" name="newcat[{$cat[cid]}][cname]" value="$cat[cname]">　<a href="###" onclick="addcat($cat[cid])" class="addcat">添加子分类</a></td>
+	  <td><input type="text" class="text catbox" name="newcat[{$cat[cid]}][pinyin]" value="$cat[pinyin]"></td>
+	  <td><input type="text" class="text order" name="newcat[{$cat[cid]}][displayorder]" value="$cat[displayorder]"></td>
+	  <td>$cat[records]</td>
+	  <td><a href="{$BASESCRIPT}?action=category&operation=edit&cid=$cat[cid]">编辑</a> <a href="{$BASESCRIPT}?action=category&operation=delete&cid=$cat[cid]">删除</a></td>
+	</tr>
+	<!--{loop $categories[$cat[cid]] $category}-->
+	<tr onmouseover="this.className='hover'" onmouseout="this.className=''">
+	  <td>$category[cid]</td>
+	  <td>|－<input type="text" class="text catbox" name="newcat[{$category[cid]}][cname]" value="$category[cname]"></td>
+	  <td><input type="text" class="text catbox" name="newcat[{$category[cid]}][pinyin]" value="$category[pinyin]"></td>
+	  <td><input type="text" class="text order" name="newcat[{$category[cid]}][displayorder]" value="$category[displayorder]"></td>
+	  <td>$category[records]</td>
+	  <td><a href="{$BASESCRIPT}?action=category&operation=edit&cid=$category[cid]">编辑</a> <a href="{$BASESCRIPT}?action=category&operation=delete&cid=$category[cid]">删除</a></td>
+	</tr>
+	<!--{/loop}-->
+	</tbody>
+	<!--{/loop}-->
+	<tbody id="newcat"></tbody>
+	<tr>
+	  <td></td>
+	  <td colspan="5"><div class="addtr"><a href="javascript:;" onclick="addgroup()">添加新分类</a></div></td>
+	</tr>
+	<tr>
+		<td colspan="6">
+			<input type="submit" class="button" value="$lang[submit]" />
+			<input type="button" class="button" value="$lang[refresh]" onclick="LoadPage()" />
+		</td>
+	</tr>
+  </table>
+  </form>
+</div>
+<script type="text/javascript">
+function addgroup(){
+	$("#newcat").append('<tr><td><input type="hidden" name="newfid[]" value="0" /></td><td><input type="text" class="text groupbox" name="newcname[]" value="新分类名称"></td>'+
+	  '<td><input type="text" class="text catbox" name="newpinyin[]"></td><td><input type="text" class="text order" name="neworder[]" value="0"></td>'+
+	  '<td></td><td></td></tr>');
+}
+function addcat(fid){
+	$("#body_"+fid).append('<tr><td><input type="hidden" name="newfid[]" value="'+fid+'" /></td>'+
+	  '<td>|－<input type="text" class="text catbox" name="newcname[]" value="新子分类名称"></td>'+
+	  '<td><input type="text" class="text catbox" name="newpinyin[]"></td> <td><input type="text" class="text order" name="neworder[]" value="0"></td><td>$category[records]</td><td></td></tr>');
+}
+</script>

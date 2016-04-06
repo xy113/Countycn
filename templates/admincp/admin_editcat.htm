@@ -1,0 +1,111 @@
+<div class="yourpos">
+	<em><a href="{$BASESCRIPT}?action=category">返回</a></em>
+	{$lang[cp_home]}
+	<span>信息分类管理</span>
+	<span>编辑分类</span>
+</div>
+<div class="main-div">
+   <form name="category" method="post" action="{$BASESCRIPT}?action=category&operation=edit" onSubmit="return checkForm()">
+    <input type="hidden" name="submit" value="true">
+	<input type="hidden" name="cid" value="{$category[cid]}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      <tr>
+        <td class="bold" width="360">分类名称</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="newcat[cname]" type="text" class="text" id="cat_name" value="$category[cname]"></td>
+        <td>必填字段，不能留空</td>
+      </tr>
+      <tr>
+        <td class="bold">拼音或英文简写</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="newcat[pinyin]" type="text" class="text" id="cat_pinyin" value="$category[pinyin]"></td>
+        <td>必填字段，不能留空，且必须是唯一的，不能与其他分类有重复</td>
+      </tr>
+      <tr>
+        <td class="bold">上级分类</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+		<select name="newcat[fid]" class="text">
+			<option value="0">作为根分类</option>
+			<!--{loop $CACHE[categories] $cat}-->
+			<!--{if $cat[ctype]=='group'}-->
+			<option value="$cat[cid]"{if $cat[cid]==$category[fid]} selected="selected"{/if}>$cat[cname]</option>
+			<!--{/if}-->
+			<!--{/loop}-->
+		</select>
+		</td>
+        <td>&nbsp;</td>
+      </tr>
+	  <tr>
+        <td class="bold">分类信息模型</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>
+		<select name="newcat[typeid]" class="text">
+			<!--{loop $CACHE[threadtypes] $tt}-->
+			<option value="$tt[typeid]"{if $category[typeid]==$tt[typeid]} selected="selected"{/if}>$tt[typename]</option>
+			<!--{/loop}-->
+		</select>
+		</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td class="bold">分类排序</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="newcat[displayorder]" type="text" class="text" id="newcat[displayorder]" value="$category[displayorder]"></td>
+        <td>默认为0，数字越小越靠前</td>
+      </tr>
+      <tr>
+        <td class="bold">是否启用</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>
+			<select name="newcat[enable]" class="text">
+				<option value="1"{if $category[enable]} selected="selected"{/if}>是</option>
+				<option value="0"{if $category[enable]} selected="selected"{/if}>否</option>
+			</select>
+		</td>
+        <td>分类如果没有启用将不会显示在页面上</td>
+      </tr>
+      <tr>
+        <td class="bold">分类关键字</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><input name="newcat[keywords]" type="text" class="text" id="newcat[keywords]" value="$category[keywords]"></td>
+        <td>Keywords 项出现在页面头部的 Meta 标签中，用于记录本页面的关键字，多个关键字间请用半角逗号 "," 隔开</td>
+      </tr>
+      <tr>
+        <td class="bold">分类描述</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td><textarea name="newcat[description]" class="text">$category[description]</textarea></td>
+        <td><span id="body">Description 出现在页面头部的 Meta 标签中，用于记录本页面的概要与描述</span></td>
+      </tr>
+      <tr>
+        <td><input class="button" type="submit" value="$lang[submit]"></td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+	</form>
+</div>
+<script type="text/javascript">
+function checkForm(){
+	if(!$("#cat_name").val() || !$("#cat_pinyin").val()){
+		dialog("<p>必填字段不能留空，请重新填写。</p>",{title:'出错了'});
+		return false;
+	}
+	return true;
+}
+</script>

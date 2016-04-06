@@ -1,0 +1,174 @@
+<?php
+//Xcms! cache file, DO NOT modify me!
+//Created: Jan 3, 2013, 16:53
+//Identify: 72b84d0c1a622469161fe1e78f73e788
+
+$citydata=array (
+  'cityid' => '11',
+  'provinceid' => '23',
+  'cityname' => '×ñÒå',
+  'citypy' => 'zunyi',
+  'cityletter' => 'Z',
+  'cityhost' => 'zhunyi',
+  'displayorder' => '0',
+  'admins' => 'adminxcs',
+  'area' => 
+  array (
+    153 => 
+    array (
+      'areaid' => '153',
+      'areaname' => 'ÄÏ°×',
+    ),
+    154 => 
+    array (
+      'areaid' => '154',
+      'areaname' => 'ÓÀÀÖ',
+    ),
+    155 => 
+    array (
+      'areaid' => '155',
+      'areaname' => 'ÐÂÖÛ',
+    ),
+    156 => 
+    array (
+      'areaid' => '156',
+      'areaname' => 'Èý¶É',
+    ),
+    157 => 
+    array (
+      'areaid' => '157',
+      'areaname' => 'Ïº×Ó',
+    ),
+    158 => 
+    array (
+      'areaid' => '158',
+      'areaname' => 'À®°È',
+    ),
+    159 => 
+    array (
+      'areaid' => '159',
+      'areaname' => 'Î÷Æº',
+    ),
+    160 => 
+    array (
+      'areaid' => '160',
+      'areaname' => 'ÁúÆº',
+    ),
+    161 => 
+    array (
+      'areaid' => '161',
+      'areaname' => 'ÍÅÏª',
+    ),
+    162 => 
+    array (
+      'areaid' => '162',
+      'areaname' => 'Ìú³§',
+    ),
+    163 => 
+    array (
+      'areaid' => '163',
+      'areaname' => 'Áú¿Ó',
+    ),
+    164 => 
+    array (
+      'areaid' => '164',
+      'areaname' => 'Ã«Àõ',
+    ),
+    165 => 
+    array (
+      'areaid' => '165',
+      'areaname' => 'Èý²í',
+    ),
+    166 => 
+    array (
+      'areaid' => '166',
+      'areaname' => '¹¶½­',
+    ),
+    167 => 
+    array (
+      'areaid' => '167',
+      'areaname' => 'ÐÂÃñ',
+    ),
+    168 => 
+    array (
+      'areaid' => '168',
+      'areaname' => 'ÎÚ½­',
+    ),
+    169 => 
+    array (
+      'areaid' => '169',
+      'areaname' => 'ÈýºÏ',
+    ),
+    170 => 
+    array (
+      'areaid' => '170',
+      'areaname' => 'Ê¯°å',
+    ),
+    171 => 
+    array (
+      'areaid' => '171',
+      'areaname' => 'Ñ¼Ïª',
+    ),
+    172 => 
+    array (
+      'areaid' => '172',
+      'areaname' => 'ÀÖÉ½',
+    ),
+    173 => 
+    array (
+      'areaid' => '173',
+      'areaname' => 'ÂíÌã',
+    ),
+    174 => 
+    array (
+      'areaid' => '174',
+      'areaname' => '·ãÏã',
+    ),
+    175 => 
+    array (
+      'areaid' => '175',
+      'areaname' => 'ºé¹Ø',
+    ),
+    176 => 
+    array (
+      'areaid' => '176',
+      'areaname' => 'ÑóË®',
+    ),
+    177 => 
+    array (
+      'areaid' => '177',
+      'areaname' => 'ËÉÁÖ',
+    ),
+    178 => 
+    array (
+      'areaid' => '178',
+      'areaname' => 'Æ½Õý',
+    ),
+    179 => 
+    array (
+      'areaid' => '179',
+      'areaname' => 'Ã«Ê¯',
+    ),
+    180 => 
+    array (
+      'areaid' => '180',
+      'areaname' => 'Ö¥Âé',
+    ),
+    181 => 
+    array (
+      'areaid' => '181',
+      'areaname' => 'É³Íå',
+    ),
+    182 => 
+    array (
+      'areaid' => '182',
+      'areaname' => 'É½Åè',
+    ),
+    183 => 
+    array (
+      'areaid' => '183',
+      'areaname' => 'áÔ»ü',
+    ),
+  ),
+)
+?>
